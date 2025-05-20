@@ -149,6 +149,17 @@
             position: relative;
             padding: 40px 0;
         }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #ff0000;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
         .timeline-item {
             position: relative;
             width: 50%;
@@ -156,7 +167,7 @@
             box-sizing: border-box;
             opacity: 0;
             will-change: transform, opacity;
-            transition: opacity 0.8s ease;
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .timeline-item.left {
             left: 0;
@@ -169,18 +180,17 @@
         .timeline-item.animate {
             opacity: 1;
             transform: translateX(0);
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
         }
         .timeline-item::before {
             content: '';
             position: absolute;
-            width: 4px; /* Slightly thicker line */
-            height: 16px; /* Matches circle height */
-            background: #ff0000; /* Red line */
-            top: 20px; /* Align with circle top */
+            width: 4px;
+            height: 16px;
+            background: #ff0000;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2; /* Behind circle, above items */
+            z-index: 2;
             border-radius: 2px;
         }
         .timeline-text {
@@ -189,7 +199,7 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: relative;
-            z-index: 4; /* Above line and circles */
+            z-index: 4;
             transition: all 0.3s ease;
         }
         .timeline-text:hover {
@@ -198,7 +208,7 @@
         }
         .timeline-date {
             font-size: 16px;
-            color: #ff0000; /* Match red theme */
+            color: #ff0000;
             margin-bottom: 10px;
             font-weight: 500;
         }
@@ -226,16 +236,16 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            background: #ff0000; /* Filled red circle */
+            background: #ff0000;
             border-radius: 50%;
             top: 20px;
-            z-index: 3; /* Above line, below text */
+            z-index: 3;
         }
         .timeline-item.left::after {
-            right: -8px; /* Center line within circle */
+            right: -8px;
         }
         .timeline-item.right::after {
-            left: -8px; /* Center line within circle */
+            left: -8px;
         }
 
         /* Portfolio Styles */
@@ -282,8 +292,27 @@
             transition: background 0.3s ease;
         }
         .portfolio-overlay a:hover {
-            background: #ff0000; /* Match red theme */
+            background: #ff0000;
             border-color: #ff0000;
+        }
+        #portfolio-filter {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        #portfolio-filter li {
+            margin: 0 15px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        #portfolio-filter li:hover,
+        #portfolio-filter li.filter-active {
+            color: #ff0000;
         }
 
         /* Contact Info Styles */
@@ -333,6 +362,9 @@
 
         /* Responsive Adjustments */
         @media (max-width: 767.98px) {
+            .timeline::before {
+                left: 20px;
+            }
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
@@ -345,12 +377,12 @@
                 transform: translateX(0);
             }
             .timeline-item::before {
-                left: 20px; /* Line on left */
+                left: 20px;
                 transform: translateX(0);
             }
             .timeline-item.left::after,
             .timeline-item.right::after {
-                left: 12px; /* Circle aligned with 4px line */
+                left: 12px;
             }
             .timeline-item.left .timeline-text::before,
             .timeline-item.right .timeline-text::before {
@@ -369,6 +401,12 @@
             }
             .skill-item.animate {
                 transform: translateY(0);
+            }
+            #portfolio-filter {
+                flex-wrap: wrap;
+            }
+            #portfolio-filter li {
+                margin: 5px 10px;
             }
         }
     </style>
@@ -516,78 +554,38 @@
     </div>
     <!-- Service End -->
 
-         <!-- Experience Start -->
-        <div class="experience" id="experience">
-            <div class="container">
-                <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>My Resume</p>
-                    <h2>Working Experience</h2>
-                </header>
-                <div class="timeline">
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
-                        </div>
+    <!-- Experience Start -->
+    <div class="experience" id="experience">
+        <div class="container">
+            <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                <p>My Resume</p>
+                <h2>Work Experience</h2>
+            </header>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-text">
+                        <div class="timeline-date">March 2023 - Present</div>
+                        <h2>Senior BIM Modeler</h2>
+                        <h4>HSS BIM Solutions PVT.LTD., India</h4>
+                        <p>
+                            Modeled complex utility networks (water supply, sewage, drainage, electrical, telecom, and bridges) for overseas projects using Civil 3D and Revit. Created detailed profiles, managed data shortcuts, and developed parametric Revit families for infrastructure components, adhering to BEP standards. Resolved clashes using Navisworks for seamless system integration.
+                        </p>
                     </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right wow slideInRight" data-wow-delay="0.1s">
-                        <div class="timeline-text">
-                            <div class="timeline-date">2045 - 2050</div>
-                            <h2>Web Developer</h2>
-                            <h4>Soft Agency, San Francisco, CA</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-                            </p>
-                        </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-text">
+                        <div class="timeline-date">Aug 2022 - March 2023</div>
+                        <h2>Junior BIM Modeler</h2>
+                        <h4>HSS BIM Solutions PVT.LTD., India</h4>
+                        <p>
+                            Contributed to as-built modeling of residential and commercial buildings in France using Revit Architecture. Used Dynamo for basic automation of sheet creation, performed quantity takeoffs in Excel, and ensured IFC compliance for smooth data exchange.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Job Experience End -->
+    </div>
+    <!-- Experience End -->
 
     <!-- Education Start -->
     <div class="education" id="education">
@@ -997,7 +995,7 @@
     <!-- Template Javascript -->
     <script defer src="js/main.js"></script>
 
-    <!-- Animation Trigger Script -->
+    <!-- Animation and Functionality Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize WOW.js
@@ -1006,14 +1004,14 @@
             // Animation trigger for timeline, software, skill, and service items
             const animatedItems = document.querySelectorAll('.timeline-item, .software-item, .skill-item, .service-item');
             const observerOptions = {
-                threshold: 0.2 // Trigger when 20% of the item is visible
+                threshold: 0.2
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate');
-                        observer.unobserve(entry.target); // Stop observing once animated
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
@@ -1037,6 +1035,34 @@
                     if (overlay) {
                         overlay.style.opacity = '0';
                     }
+                });
+            });
+
+            // Navbar auto-close on mobile
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('#navbarCollapse');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 767.98 && navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                });
+            });
+
+            // Portfolio filter functionality
+            const $portfolioContainer = $('.portfolio-container');
+            $portfolioContainer.isotope({
+                itemSelector: '.portfolio-item',
+                layoutMode: 'fitRows'
+            });
+
+            $('#portfolio-filter li').on('click', function() {
+                $('#portfolio-filter li').removeClass('filter-active');
+                $(this).addClass('filter-active');
+                $portfolioContainer.isotope({
+                    filter: $(this).data('filter')
                 });
             });
         });
