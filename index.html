@@ -149,6 +149,17 @@
             position: relative;
             padding: 40px 0;
         }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #ff0000;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
         .timeline-item {
             position: relative;
             width: 50%;
@@ -186,19 +197,8 @@
         .timeline-date {
             font-size: 16px;
             color: #ff0000;
+            margin-bottom: 10px;
             font-weight: 500;
-            position: absolute;
-            top: 20px;
-            transform: translateY(-50%);
-            z-index: 5;
-        }
-        .timeline-item.left .timeline-date {
-            right: -100px;
-            text-align: right;
-        }
-        .timeline-item.right .timeline-date {
-            left: -100px;
-            text-align: left;
         }
         .timeline-item.left .timeline-text::before,
         .timeline-item.right .timeline-text::before {
@@ -236,34 +236,6 @@
         }
         .timeline-item.right::after {
             left: -8px;
-        }
-        /* Line segments above and below the circle */
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: #ff0000;
-            z-index: 1;
-        }
-        .timeline-item.left::before,
-        .timeline-item.right::before {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .timeline-item:not(:first-child)::before {
-            top: 0;
-            height: 20px; /* From top of item to top of circle */
-        }
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background: #ff0000;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 36px; /* From bottom of circle to bottom of item */
-            height: calc(100% - 36px);
-            z-index: 1;
         }
 
         /* Portfolio Styles */
@@ -380,6 +352,9 @@
 
         /* Responsive Adjustments */
         @media (max-width: 767.98px) {
+            .timeline::before {
+                left: 20px;
+            }
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
@@ -394,23 +369,11 @@
             .timeline-item::after {
                 left: 12px;
             }
-            .timeline-item.left::before,
-            .timeline-item.right::before {
-                left: 20px;
-            }
-            .timeline-item:not(:last-child)::after {
-                left: 20px;
-            }
             .timeline-item.left .timeline-text::before,
             .timeline-item.right .timeline-text::before {
                 left: -10px;
                 border-width: 8px 10px 8px 0;
                 border-color: transparent #ffffff transparent transparent;
-            }
-            .timeline-item.left .timeline-date,
-            .timeline-item.right .timeline-date {
-                left: 40px;
-                text-align: left;
             }
             .software-item, .service-item {
                 transform: translateY(50%);
