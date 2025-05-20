@@ -225,30 +225,17 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            background: #ff0000;
+            background: transparent;
+            border: 2px solid #ff0000;
             border-radius: 50%;
             top: 20px;
             z-index: 3;
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: #ffffff;
-            border-radius: 50%;
-            top: 22px;
-            z-index: 4;
-        }
-        .timeline-item.left::after,
-        .timeline-item.left::before {
+        .timeline-item.left::after {
             right: -8px;
-            right: -6px;
         }
-        .timeline-item.right::after,
-        .timeline-item.right::before {
+        .timeline-item.right::after {
             left: -8px;
-            left: -6px;
         }
 
         /* Portfolio Styles */
@@ -379,10 +366,8 @@
             .timeline-item.animate {
                 transform: translateX(0);
             }
-            .timeline-item::after,
-            .timeline-item::before {
+            .timeline-item::after {
                 left: 12px;
-                left: 14px;
             }
             .timeline-item.left .timeline-text::before,
             .timeline-item.right .timeline-text::before {
