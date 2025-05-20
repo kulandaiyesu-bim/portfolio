@@ -230,11 +230,25 @@
             top: 20px;
             z-index: 3;
         }
-        .timeline-item.left::after {
-            right: -8px;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-radius: 50%;
+            top: 22px;
+            z-index: 4;
         }
-        .timeline-item.right::after {
+        .timeline-item.left::after,
+        .timeline-item.left::before {
+            right: -8px;
+            right: -6px;
+        }
+        .timeline-item.right::after,
+        .timeline-item.right::before {
             left: -8px;
+            left: -6px;
         }
 
         /* Portfolio Styles */
@@ -365,8 +379,10 @@
             .timeline-item.animate {
                 transform: translateX(0);
             }
-            .timeline-item::after {
+            .timeline-item::after,
+            .timeline-item::before {
                 left: 12px;
+                left: 14px;
             }
             .timeline-item.left .timeline-text::before,
             .timeline-item.right .timeline-text::before {
@@ -572,7 +588,7 @@
     <!-- Experience End -->
 
     <!-- Education Start -->
-    <div class="education" id="education">
+    <div class="experience" id="education">
         <div class="container">
             <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
                 <p>My Education</p>
@@ -1024,13 +1040,14 @@
 
             // Navbar auto-close on mobile
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            const navbarToggler = document.querySelector('.navbar-toggler');
             const navbarCollapse = document.querySelector('#navbarCollapse');
 
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function() {
                     if (window.innerWidth <= 767.98 && navbarCollapse.classList.contains('show')) {
-                        $(navbarCollapse).collapse('hide');
+                        setTimeout(() => {
+                            $('.navbar-collapse').collapse('hide');
+                        }, 100);
                     }
                 });
             });
