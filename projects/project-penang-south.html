@@ -50,28 +50,83 @@
             padding-left: 20px;
             margin-bottom: 20px;
         }
-        .modal-content {
-            background: transparent;
-            border: none;
+        /* Model Images Section */
+        .model-images {
+            margin-top: 40px;
+            overflow: hidden;
         }
-        .modal-img {
-            max-width: 100%;
+        .model-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .model-gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            animation: flipIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        /* Sequential animation delay for each image */
+        .model-gallery img:nth-child(1) { animation-delay: 0.15s; }
+        .model-gallery img:nth-child(2) { animation-delay: 0.3s; }
+        .model-gallery img:nth-child(3) { animation-delay: 0.45s; }
+        .model-gallery img:nth-child(4) { animation-delay: 0.6s; }
+        .model-gallery img:nth-child(5) { animation-delay: 0.75s; }
+        .model-gallery img:nth-child(6) { animation-delay: 0.9s; }
+        .model-gallery img:nth-child(7) { animation-delay: 1.05s; }
+        .model-gallery img:nth-child(8) { animation-delay: 1.2s; }
+        .model-gallery img:nth-child(9) { animation-delay: 1.35s; }
+        .model-gallery img:nth-child(10) { animation-delay: 1.5s; }
+        @keyframes flipIn {
+            0% {
+                opacity: 0;
+                transform: perspective(400px) rotateY(30deg) translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(400px) rotateY(0deg) translateX(0);
+            }
+        }
+        /* Image Overlay */
+        .image-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .image-overlay.active {
+            display: flex;
+        }
+        .overlay-img {
+            max-width: 80%;
             max-height: 80vh;
-            margin: auto;
             border-radius: 10px;
-            animation: zoomIn 0.3s ease;
+        }
+        .overlay-img.zoom-in {
+            animation: zoomIn 0.5s ease forwards;
         }
         @keyframes zoomIn {
-            from {
+            0% {
                 transform: scale(0.5);
                 opacity: 0;
             }
-            to {
+            100% {
                 transform: scale(1);
                 opacity: 1;
             }
         }
-        .modal-nav {
+        .overlay-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -83,18 +138,65 @@
             cursor: pointer;
             transition: background 0.2s ease;
         }
-        .modal-nav:hover {
+        .overlay-nav:hover {
             background: rgba(0, 0, 0, 0.8);
         }
-        .modal-prev {
+        .overlay-prev {
             left: 20px;
         }
-        .modal-next {
+        .overlay-next {
             right: 20px;
         }
-        .modal-dialog {
-            max-width: 90%;
-            margin: 1.75rem auto;
+        .overlay-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+        .overlay-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        /* Slideshow Animation */
+        .overlay-img.slide-left {
+            animation: slideLeft 0.5s ease-in-out forwards;
+        }
+        .overlay-img.slide-right {
+            animation: slideRight 0.5s ease-in-out forwards;
+        }
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideRight {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .model-gallery img {
+                width: 150px;
+                height: 100px;
+            }
+            .overlay-img {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
@@ -135,36 +237,54 @@
 
                     <h3>Overview of the Project</h3>
                     <p>
-                        The Penang South Reclamation project aimed to develop utility and infrastructure models for a major land reclamation initiative in Malaysia. As a Senior BIM Modeler, I contributed by creating detailed BIM models for utilities and reclamation structures using Civil 3D and Revit.
+                        The Penang South Reclamation project aimed to develop utility and infrastructure models for a major land reclamation initiative in Malaysia. As a BIM Modeler, I contributed by creating detailed BIM models for utilities and reclamation structures using Civil 3D and Revit.
                     </p>
 
                     <h3>Project Details</h3>
                     <ul>
                         <li><strong>Location:</strong> Penang, Malaysia</li>
-                        <li><strong>Duration:</strong> 2023 - 2024</li>
+                        <li><strong>Duration:</strong> May 2024 - Ongoing</li>
+                        <li><strong>LOD:</strong> 300</li>
                         <li><strong>Role:</strong> Senior BIM Modeler</li>
                         <li><strong>Worked Firm:</strong> HSS BIM Solutions Pvt. Ltd.</li>
-                        <li><strong>Tools Used:</strong> Civil 3D, Revit, Navisworks, Dynamo (basic usage)</li>
-                        <li><strong>Reference:</strong> <a href="https://example.com/penang-south-project" target="_blank">Project Reference</a></li>
+                        <li><strong>Tools Used:</strong> Civil 3D, Revit, Navisworks</li>
+                        <li><strong>Reference:</strong> <a href="https://penanginfra.com/penang-south-islands/">Project Reference</a></li>
                     </ul>
 
                     <h3>Key Contributions</h3>
-                    <ul>
-                        <li>Modeled utility networks and reclamation structures, including drainage and water systems, using Civil 3D.</li>
-                        <li>Developed parametric Revit families for infrastructure components, ensuring BEP compliance.</li>
-                        <li>Performed clash detection with Navisworks to resolve conflicts in complex reclamation models.</li>
-                        <li>Used Dynamo to automate quantity takeoffs and streamline data management.</li>
-                    </ul>
+		    <ul>
+		       <li>In this project, my contributions included modeling a water system, encompassing recycling, reticulation, and incoming pipelines throughout the project using Civil 3D.</li>
+ 		       <li>Developed parametric Revit families for infrastructure components, such as valve chambers and pipe casings, ensuring BEP compliance.</li>
+ 		       <li>Modeled overhead water tanks with MEP and drainage systems around the water tanks.</li>
+ 		       <li>Performed clash detection using Navisworks to resolve conflicts in complex reclamation models.</li>
+		       <li>Utilized ACC for collaboration and project management.</li>
+		    </ul>
 
-                    <h3>Challenges and Solutions</h3>
-                    <p>
-                        The project’s environmental constraints required precise modeling. I incorporated geotechnical data into the BIM models and collaborated with environmental consultants to ensure compliance, delivering accurate models.
-                    </p>
+		    <h3>Challenges and Solutions</h3>
+		    <p>
+		        The project’s environmental constraints necessitated precise modeling. As our firm solely handled the water system modeling, coordinating with other utilities to resolve clashes was particularly challenging. To address this, I integrated geotechnical data into the BIM models and collaborated closely with environmental consultants to ensure compliance, delivering accurate and conflict-free models. Through this project, I developed expertise in resolving clashes and other technical issues by fostering strong interdisciplinary collaboration.
+		    </p>
 
                     <h3>Outcomes</h3>
                     <p>
                         The BIM models supported efficient planning and execution of the reclamation, minimizing environmental impact and meeting project milestones.
                     </p>
+
+                    <!-- Model Images Section -->
+                    <h3>Model Images</h3>
+                    <div class="model-images">
+                        <div class="model-gallery">
+                            <img src="../img/penang-south-reclamation-1.jpg" alt="Penang South Reclamation Model Image 1" data-index="0">
+                            <img src="../img/penang-south-reclamation-2.jpg" alt="Penang South Reclamation Model Image 2" data-index="1">
+                            <img src="../img/penang-south-reclamation-3.jpg" alt="Penang South Reclamation Model Image 3" data-index="2">
+                            <img src="../img/penang-south-reclamation-4.jpg" alt="Penang South Reclamation Model Image 4" data-index="3">
+                            <img src="../img/penang-south-reclamation-5.jpg" alt="Penang South Reclamation Model Image 5" data-index="4">
+                            <img src="../img/penang-south-reclamation-6.jpg" alt="Penang South Reclamation Model Image 6" data-index="5">
+                            <img src="../img/penang-south-reclamation-7.jpg" alt="Penang South Reclamation Model Image 7" data-index="6">
+                            <img src="../img/penang-south-reclamation-8.jpg" alt="Penang South Reclamation Model Image 8" data-index="7">
+                            <img src="../img/penang-south-reclamation-9.jpg" alt="Penang South Reclamation Model Image 9" data-index="8">
+                        </div>
+                    </div>
 
                     <a class="btn" href="../index.html#portfolio">Back to Portfolio</a>
                 </div>
@@ -173,17 +293,12 @@
     </div>
     <!-- Project Details End -->
 
-    <!-- Image Modal (Unused but Retained) -->
-    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img src="" alt="Modal Image" class="modal-img" id="modalImage">
-                    <span class="modal-nav modal-prev" id="modalPrev"><i class="fas fa-chevron-left"></i></span>
-                    <span class="modal-nav modal-next" id="modalNext"><i class="fas fa-chevron-right"></i></span>
-                </div>
-            </div>
-        </div>
+    <!-- Image Overlay -->
+    <div class="image-overlay" id="imageOverlay">
+        <span class="overlay-close" id="overlayClose"><i class="fas fa-times"></i></span>
+        <img src="" alt="" class="overlay-img" id="overlayImage">
+        <span class="overlay-nav overlay-prev" id="overlayPrev"><i class="fas fa-chevron-left"></i></span>
+        <span class="overlay-nav overlay-next" id="overlayNext"><i class="fas fa-chevron-right"></i></span>
     </div>
 
     <!-- Footer Start -->
@@ -228,43 +343,88 @@
     <!-- Template Javascript -->
     <script defer src="../js/main.js"></script>
 
-    <!-- Modal Navigation Script (Unused but Retained) -->
+    <!-- Overlay and Slideshow Script -->
     <script defer>
         $(document).ready(function() {
-            let currentGallery, currentIndex;
+            let currentIndex = 0;
+            let slideshowInterval;
+            let direction = 'left'; // Tracks slideshow direction
 
-            // Open modal and set initial image
-            $('.image-gallery img').on('click', function() {
-                currentGallery = $(this).data('gallery'); // 'inputs' or 'outputs'
+            // Image click to open overlay
+            $('.model-gallery img').on('click', function() {
                 currentIndex = parseInt($(this).data('index'));
-                updateModalImage();
-                $('#imageModal').modal('show');
+                updateOverlayImage(true); // True for initial click to trigger zoomIn
+                $('#imageOverlay').addClass('active');
+                // Start slideshow after zoomIn animation completes
+                setTimeout(startSlideshow, 500); // Matches zoomIn duration
             });
 
+            // Update overlay image
+            function updateOverlayImage(isInitialClick = false) {
+                const $image = $(`.model-gallery img[data-index="${currentIndex}"]`);
+                if (!$image.length) {
+                    console.error('Image not found for index:', currentIndex); // Debug: Check for missing images
+                    return;
+                }
+                const imgSrc = $image.attr('src');
+                const imgAlt = $image.attr('alt');
+                const $overlayImage = $('#overlayImage');
+
+                // Remove all animations
+                $overlayImage.removeClass('zoom-in slide-left slide-right');
+
+                // Update image source and alt
+                $overlayImage.attr('src', imgSrc).attr('alt', imgAlt);
+
+                // Force animation with requestAnimationFrame
+                requestAnimationFrame(() => {
+                    if (isInitialClick) {
+                        $overlayImage.addClass('zoom-in');
+                    } else {
+                        $overlayImage.addClass(direction === 'left' ? 'slide-left' : 'slide-right');
+                    }
+                });
+            }
+
+            // Start slideshow
+            function startSlideshow() {
+                clearInterval(slideshowInterval);
+                slideshowInterval = setInterval(function() {
+                    if (direction === 'left') {
+                        currentIndex = (currentIndex + 1) % 9; // Adjusted to 9 images
+                        if (currentIndex === 8) direction = 'right';
+                    } else {
+                        currentIndex = (currentIndex - 1 + 9) % 9; // Adjusted to 9 images
+                        if (currentIndex === 0) direction = 'left';
+                    }
+                    updateOverlayImage();
+                }, 3000); // 3-second interval
+            }
+
             // Previous image
-            $('#modalPrev').on('click', function() {
-                currentIndex = (currentIndex - 1 + 10) % 10; // Wrap around
-                updateModalImage();
+            $('#overlayPrev').on('click', function() {
+                clearInterval(slideshowInterval);
+                direction = 'right';
+                currentIndex = (currentIndex - 1 + 9) % 9; // Adjusted to 9 images
+                updateOverlayImage();
+                startSlideshow();
             });
 
             // Next image
-            $('#modalNext').on('click', function() {
-                currentIndex = (currentIndex + 1) % 10; // Wrap around
-                updateModalImage();
+            $('#overlayNext').on('click', function() {
+                clearInterval(slideshowInterval);
+                direction = 'left';
+                currentIndex = (currentIndex + 1) % 9; // Adjusted to 9 images
+                updateOverlayImage();
+                startSlideshow();
             });
 
-            // Update modal image based on current gallery and index
-            function updateModalImage() {
-                const galleryClass = currentGallery === 'inputs' ? '.inputs-gallery' : '.outputs-gallery';
-                const imgSrc = $(`${galleryClass} img[data-index="${currentIndex}"]`).attr('src');
-                const imgAlt = $(`${galleryClass} img[data-index="${currentIndex}"]`).attr('alt');
-                $('#modalImage').attr('src', imgSrc).attr('alt', imgAlt);
-            }
-
-            // Close modal on backdrop click
-            $('#imageModal').on('click', function(e) {
-                if ($(e.target).hasClass('modal')) {
-                    $('#imageModal').modal('hide');
+            // Close overlay
+            $('#overlayClose, #imageOverlay').on('click', function(e) {
+                if (e.target.id === 'imageOverlay' || e.target.id === 'overlayClose') {
+                    clearInterval(slideshowInterval);
+                    $('#imageOverlay').removeClass('active');
+                    $('#overlayImage').removeClass('zoom-in slide-left slide-right');
                 }
             });
         });
