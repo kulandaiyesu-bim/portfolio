@@ -225,7 +225,8 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            background: #ff0000;
+            background: transparent;
+            border: 2px solid #ff0000;
             border-radius: 50%;
             top: 20px;
             z-index: 3;
@@ -349,20 +350,6 @@
             line-height: 1.6;
         }
 
-        /* View Projects Button Style */
-        .view-projects-btn {
-            display: inline-block;
-            color: #ff0000;
-            font-size: 16px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-        .view-projects-btn:hover {
-            background: #ff0000;
-            color: #ffffff;
-        }
-
         /* Responsive Adjustments */
         @media (max-width: 767.98px) {
             .timeline::before {
@@ -477,7 +464,7 @@
                         </div>
                         <div class="about-text">
                             <p>
-                                I am a Senior BIM Modeler with 3 years of experience at HSS BIM Solutions PVT.LTD., specializing in Civil 3D and Revit for overseas infrastructure projects. I have modeled complex utility networks (water supply, sewage, drainage, electrical, telecom, and bridges) and developed parametric Revit families for infrastructure components, adhering to BEP standards. Proficient in clash detection using Navisworks and familiar with using Dynamo for basic automation, I ensure seamless system integration and IFC compliance for projects in Malaysia, Saudi Arabia, and France. <a href="#portfolio" class="view-projects-btn">View Projects <i class="fa fa-angle-right"></i></a>
+                                I am a Senior BIM Modeler with 3 years of experience at HSS BIM Solutions PVT.LTD., specializing in Civil 3D and Revit for overseas infrastructure projects. I have modeled complex utility networks (water supply, sewage, drainage, electrical, telecom, and bridges) and developed parametric Revit families for infrastructure components, adhering to BEP standards. Proficient in clash detection using Navisworks and familiar with using Dynamo for basic automation, I ensure seamless system integration and IFC compliance for projects in Malaysia, Saudi Arabia, and France. <a href="#portfolio" style="text-decoration: none; color: #ff0000;">...</a>
                             </p>
                         </div>
                     </div>
@@ -999,11 +986,8 @@
             // Initialize WOW.js
             new WOW().init();
 
-            // Animation trigger for software, skill, service items, and experience timeline
-            const animatedItems = document.querySelectorAll('.software-item, .skill-item, .service-item, #experience .timeline-item');
-            const educationTimelineItems = document.querySelectorAll('#education .timeline-item');
-            const educationHeader = document.querySelector('#education .section-header');
-
+            // Animation trigger for timeline, software, skill, and service items
+            const animatedItems = document.querySelectorAll('.timeline-item, .software-item, .skill-item, .service-item');
             const observerOptions = {
                 threshold: 0.2
             };
@@ -1020,25 +1004,6 @@
             animatedItems.forEach(item => {
                 observer.observe(item);
             });
-
-            // Custom observer for education section to ensure header animates first
-            const educationObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        setTimeout(() => {
-                            educationTimelineItems.forEach((item, index) => {
-                                setTimeout(() => {
-                                    item.classList.add('animate');
-                                }, index * 200);
-                            });
-                        }, 500);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            educationObserver.observe(educationHeader);
 
             // Portfolio overlay touch events
             const portfolioImages = document.querySelectorAll('.portfolio-img');
@@ -1061,18 +1026,13 @@
             // Navbar auto-close on mobile
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
             const navbarCollapse = document.querySelector('#navbarCollapse');
-            const navbarToggler = document.querySelector('.navbar-toggler');
 
             navLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    // Check if navbar is in collapsed state (mobile view)
-                    if (navbarCollapse.classList.contains('show')) {
-                        $(navbarCollapse).collapse('hide');
-                        // Ensure the toggler button reflects the collapsed state
-                        if (navbarToggler) {
-                            navbarToggler.classList.add('collapsed');
-                            navbarToggler.setAttribute('aria-expanded', 'false');
-                        }
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 767.98 && navbarCollapse.classList.contains('show')) {
+                        setTimeout(() => {
+                            $('.navbar-collapse').collapse('hide');
+                        }, 100);
                     }
                 });
             });
