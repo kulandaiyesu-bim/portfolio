@@ -62,7 +62,7 @@
         .skills {
             padding: 60px 0;
             background: #f8f9fa;
-            display: block; /* Ensure visibility */
+            display: block;
         }
         .skill-item {
             background: #ffffff;
@@ -73,7 +73,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             opacity: 0;
             will-change: transform, opacity;
-            transform: translateY(50%); /* Adjusted for mobile */
+            transform: translateY(50%);
             transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
         }
         .skill-item.animate {
@@ -144,6 +144,7 @@
         .timeline {
             position: relative;
             padding: 40px 0;
+            overflow: hidden; /* Prevent overflow issues */
         }
         .timeline::before {
             content: '';
@@ -153,7 +154,6 @@
             top: 0;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%);
             z-index: 1;
         }
         .timeline-item {
@@ -164,7 +164,7 @@
             opacity: 0;
             will-change: transform, opacity;
             transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            visibility: visible; /* Ensure visibility */
+            visibility: visible;
         }
         .timeline-item.left {
             left: 0;
@@ -207,6 +207,12 @@
             height: 0;
             border-style: solid;
             z-index: 4;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2)); /* Add shadow */
+            transform: scale(0);
+            transition: transform 0.3s ease-out;
+        }
+        .timeline-item.animate .timeline-text::before {
+            transform: scale(1); /* Popup animation */
         }
         .timeline-item.left .timeline-text::before {
             right: -10px;
@@ -227,6 +233,7 @@
             border-radius: 50%;
             top: 20px;
             z-index: 3;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
         }
         .timeline-item.left::after {
             right: -8px;
@@ -367,13 +374,14 @@
         @media (max-width: 767.98px) {
             .timeline::before {
                 left: 20px;
-                transform: none; /* Remove transform to prevent doubling */
+                transform: none;
+                width: 4px; /* Ensure single line */
             }
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
-                transform: none; /* Remove transform for mobile */
-                padding-left: 40px; /* Adjust for timeline line */
+                transform: none;
+                padding-left: 40px;
                 visibility: visible;
             }
             .timeline-item.right {
@@ -548,7 +556,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        buoy>
     </div>
     <!-- Service End -->
 
@@ -560,7 +568,7 @@
                 <h2>Work Experience</h2>
             </header>
             <div class="timeline">
-                <div class="timeline-item left">
+                <div class="timeline-item left wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="timeline-text">
                         <div class="timeline-date">March 2023 - Present</div>
                         <h2>Senior BIM Modeler</h2>
@@ -570,7 +578,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="timeline-item right">
+                <div class="timeline-item right wow fadeInRight" data-wow-delay="0.4s">
                     <div class="timeline-text">
                         <div class="timeline-date">Aug 2022 - March 2023</div>
                         <h2>Junior BIM Modeler</h2>
@@ -593,7 +601,7 @@
                 <h2>Academic Background</h2>
             </header>
             <div class="timeline">
-                <div class="timeline-item left">
+                <div class="timeline-item left wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="timeline-text">
                         <div class="timeline-date">2017 - 2021</div>
                         <h2>B.E. in Civil Engineering</h2>
@@ -601,7 +609,7 @@
                         <p>Graduated with a 7.3 CGPA, specializing in civil engineering principles and infrastructure design.</p>
                     </div>
                 </div>
-                <div class="timeline-item right">
+                <div class="timeline-item right wow fadeInRight" data-wow-delay="0.4s">
                     <div class="timeline-text">
                         <div class="timeline-date">2015 - 2017</div>
                         <h2>Higher Secondary Education</h2>
@@ -609,7 +617,7 @@
                         <p>Achieved 84.6% in HSE, focusing on Science and Bio-Mathematics.</p>
                     </div>
                 </div>
-                <div class="timeline-item left">
+                <div class="timeline-item left wow fadeInLeft" data-wow-delay="0.6s">
                     <div class="timeline-text">
                         <div class="timeline-date">2014 - 2015</div>
                         <h2>Secondary School Leaving Certificate</h2>
@@ -811,7 +819,7 @@
                         <div class="portfolio-text">
                             <h3>Penang South Reclamation</h3>
                         </div>
-                    </div>
+                        </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-3 wow fadeInUp" data-wow-delay="1.0s">
                     <div class="portfolio-wrap">
@@ -999,47 +1007,6 @@
             // Initialize WOW.js
             new WOW().init();
 
-            // Animation trigger for software, skill, service items, and experience timeline
-            const animatedItems = document.querySelectorAll('.software-item, .skill-item, .service-item, .timeline-item');
-            const educationHeader = document.querySelector('#education .section-header');
-
-            const observerOptions = {
-                threshold: 0.2
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            animatedItems.forEach(item => {
-                observer.observe(item);
-            });
-
-            // Custom observer for education section to ensure header animates first
-            const educationObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        const educationTimelineItems = document.querySelectorAll('#education .timeline-item');
-                        setTimeout(() => {
-                            educationTimelineItems.forEach((item, index) => {
-                                setTimeout(() => {
-                                    item.classList.add('animate');
-                                }, index * 200);
-                            });
-                        }, 500);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            educationObserver.observe(educationHeader);
-
             // Portfolio overlay touch events
             const portfolioImages = document.querySelectorAll('.portfolio-img');
             portfolioImages.forEach(img => {
@@ -1066,7 +1033,7 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', function(event) {
                     if (navbarCollapse.classList.contains('show')) {
-                        navbarToggler.click(); // Programmatically click the toggler to collapse
+                        navbarToggler.click();
                     }
                 });
             });
