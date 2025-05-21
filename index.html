@@ -363,33 +363,7 @@
             color: #ffffff;
         }
 
-        /* Desktop-Specific Adjustments */
-        @media (min-width: 768px) {
-            /* Center-align portfolio items */
-            .portfolio-container {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            .portfolio-item {
-                flex: 0 0 33.3333%; /* Ensure three items per row */
-                max-width: 33.3333%;
-            }
-
-            /* Adjust skills section to have two items per row */
-            .skills .row {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
-            .skill-item {
-                flex: 0 0 calc(50% - 15px); /* Two items per row with gap */
-                max-width: calc(50% - 15px);
-                margin-bottom: 30px;
-            }
-        }
-
-        /* Responsive Adjustments for Mobile */
+        /* Responsive Adjustments */
         @media (max-width: 767.98px) {
             .timeline::before {
                 left: 20px;
@@ -723,28 +697,28 @@
                 <h2>Professional Skills</h2>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="skill-item">
                         <i class="fa fa-lightbulb"></i>
                         <h3>Problem Solving</h3>
                         <p>Proficient in analyzing complex issues and devising effective solutions to ensure project accuracy and efficiency.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="skill-item">
                         <i class="fa fa-brain"></i>
                         <h3>Quick Learning</h3>
                         <p>Adaptable and fast at mastering new tools, techniques, and standards to meet evolving project demands.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="skill-item">
                         <i class="fa fa-users"></i>
                         <h3>Teamwork & Solo Work</h3>
                         <p>Excel in collaborative environments and independently, ensuring seamless coordination and high-quality deliverables.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="skill-item">
                         <i class="fa fa-clock"></i>
                         <h3>On-Time Delivery</h3>
