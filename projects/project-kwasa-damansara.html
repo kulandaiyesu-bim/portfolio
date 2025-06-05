@@ -250,10 +250,9 @@
 
                     <h3>Key Contributions</h3>
                     <ul>
-                        <li>Modeled wet and dry utility networks, including water supply, sewage, drainage, and electrical systems, across key township areas.</li>
-                        <li>Used Dynamo in Revit for automating repetitive tasks, such as utility component placement, to enhance efficiency.</li>
-                        <li>Ensured compliance with BIM Execution Plan (BEP) standards for seamless data integration and IFC compliance.</li>
-                        <li>Conducted clash detection using Navisworks to resolve conflicts with structural and architectural models.</li>
+                        <li>Modelled utilities including electrical, telecom, water supply, sewer, drainage, street lights, and road furniture in Civil 3D.</li>
+                        <li>Modelled proposed high zone water reservoir structure along with MEP services, topography, drains, and electrical control rooms in Revit.</li>
+                        <li>Used Navisworks for clash detection, resolving internal clashes and coordinating with other packages to ensure a clash-free model.</li>
                     </ul>
 
                     <h3>Challenges and Solutions</h3>
@@ -328,7 +327,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-->JavaScript Libraries -->
+    <!-- JavaScript Libraries -->
     <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script defer src="../lib/easing/easing.min.js"></script>
@@ -386,7 +385,7 @@
             function startSlideshow() {
                 clearInterval(slideshowInterval);
                 slideshowInterval = setInterval(function() {
-                    if (direction == 'left') {
+                    if (direction === 'left') {
                         currentIndex = (currentIndex + 1) % 9;
                         if (currentIndex === 8) direction = 'right';
                     } else {
