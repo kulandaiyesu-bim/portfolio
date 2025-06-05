@@ -85,7 +85,7 @@
             }
             100% {
                 opacity: 1;
-                transform: perspective(400px) rotateY(0deg) translateX(0);
+                transform: perspective(400px) rotateY(0deg);
             }
         }
         /* Image Overlay */
@@ -100,7 +100,7 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            flex-direction: row;
         }
         .image-overlay.active {
             display: flex;
@@ -108,7 +108,7 @@
         .overlay-img {
             max-width: 80%;
             max-height: 80vh;
-            border-radius: 10px;
+            border-radius: 12px;
         }
         .overlay-img.zoom-in {
             animation: zoomIn 0.5s ease forwards;
@@ -242,7 +242,7 @@
                         <li><strong>Location:</strong> Selangor, Malaysia</li>
                         <li><strong>Duration:</strong> Feb 2024 - Ongoing</li>
                         <li><strong>LOD:</strong> 300</li>
-                        <li><strong>Role:</strong> BIM Modeler</li>
+                        <li><strong>Role:</strong> Senior BIM Modeler</li>
                         <li><strong>Worked Firm:</strong> HSS BIM Solutions Pvt. Ltd.</li>
                         <li><strong>Tools Used:</strong> Revit, Civil 3D, Navisworks, AutoCAD</li>
                         <li><strong>Reference:</strong> <a href="#" target="_blank">Project Reference</a></li>
@@ -250,20 +250,19 @@
 
                     <h3>Key Contributions</h3>
                     <ul>
-                        <li>Modeled utility networks, including water supply, drainage, and electrical systems, for the airport regeneration area.</li>
-                        <li>Developed parametric Revit families for infrastructure components to ensure consistency and compliance with BEP standards.</li>
-                        <li>Performed clash detection using Navisworks to ensure seamless integration with other disciplines.</li>
-                        <li>Utilized Civil 3D for creating detailed profiles and pressure pipe networks for accurate utility documentation.</li>
+                        <li>Modelled sewer, drainage, telecom, water, low- and high-voltage electrical services, and streetlights in Civil 3D.</li>
+                        <li>Modelled road furniture in Revit, including medians, lanes, and signage.</li>
+                        <li>Conducted clash detection using Navisworks to ensure a clash-free model.</li>
                     </ul>
 
                     <h3>Challenges and Solutions</h3>
                     <p>
-                        The challenge of modeling utilities for a high-traffic airport environment required precise coordination with multiple stakeholders. By using Navisworks for regular clash detection and adhering to BEP standards, I ensured a clash-free model. Civil 3D's advanced tools helped create accurate utility profiles, while stakeholder coordination ensured alignment with the project's ambitious goals.
+                        Modeling a wide range of utilities, including sewer, drainage, telecom, water, and electrical services, alongside road furniture in a complex airport environment presented challenges due to the need for precise integration with existing infrastructure. The high-traffic setting required careful coordination to avoid conflicts with other disciplines. I addressed these by leveraging Civil 3D for accurate utility modeling and Revit for detailed road furniture, ensuring compliance with BIM Execution Plan (BEP) standards. Regular clash detection using Navisworks allowed me to identify and resolve conflicts with other packages, such as structural and MEP systems, through iterative model adjustments and stakeholder coordination.
                     </p>
 
                     <h3>Outcomes</h3>
                     <p>
-                        Delivered reliable and coordinated utility and infrastructure models that supported the regeneration of Subang Airport. The use of Navisworks and Civil 3D ensured high-quality, clash-free deliverables, enhancing the project's efficiency. My contributions supported the seamless integration of utility systems, paving the way for successful project execution.
+                        Delivered a clash-free BIM model encompassing utilities and road furniture, supporting the Subang Airport Regeneration Plan’s infrastructure goals. The use of Civil 3D ensured precise utility modeling, while Revit’s detailed road furniture models, including medians and signage, enhanced design accuracy. Clash detection with Navisworks facilitated seamless integration with other disciplines, ensuring reliable deliverables that contributed to the project’s efficiency and successful planning for future construction phases.
                     </p>
 
                     <!-- Model Images Section -->
@@ -357,7 +356,7 @@
 
             // Update overlay image
             function updateOverlayImage(isInitialClick = false) {
-                const $image = $(`.model-gallery img[data-index="${currentIndex}"]`);
+                const $image = $(`.model-gallery img').on('data-index="${currentIndex}"]`);
                 if (!$image.length) {
                     console.error('Image not found for index:', currentIndex); // Debug: Check for missing images
                     return;
