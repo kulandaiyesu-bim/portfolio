@@ -111,9 +111,9 @@
             max-width: 80%;
             max-height: 80vh;
             border-radius: 10px;
-            transform: scale(0.5);
+            transform: scale(0.7);
             opacity: 0;
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
         .overlay-img.active {
             transform: scale(1);
@@ -314,11 +314,11 @@
             const totalImages = 9;
 
             // Image click to open overlay
-            $('.model-gallery img').on('click', function() {
-                currentIndex = parseInt($(this).data('index'));
+            $('.model-gallery img').on('click', function(e) {
+                e.preventDefault();
+                currentIndex = parseInt($(this).attr('data-index')); // Use attr instead of data for reliability
                 updateOverlayImage();
                 $('#imageOverlay').addClass('active');
-                $('#overlayImage').addClass('active');
             });
 
             // Update overlay image
@@ -332,12 +332,12 @@
                 const imgAlt = $image.attr('alt');
                 const $overlayImage = $('#overlayImage');
 
-                // Reset and update image
-                $overlayImage.removeClass('active');
+                // Reset and update image with animation
+                $overlayImage.removeClass('active').css({ transform: 'scale(0.7)', opacity: 0 });
                 setTimeout(() => {
                     $overlayImage.attr('src', imgSrc).attr('alt', imgAlt);
                     $overlayImage.addClass('active');
-                }, 50); // Small delay to ensure reset before reapplying active class
+                }, 50); // Small delay to reset animation
             }
 
             // Previous image
@@ -360,6 +360,11 @@
                     $('#imageOverlay').removeClass('active');
                     $('#overlayImage').removeClass('active');
                 }
+            });
+
+            // Prevent image click from closing overlay
+            $('#overlayImage').on('click', function(e) {
+                e.stopPropagation();
             });
         });
     </script>
