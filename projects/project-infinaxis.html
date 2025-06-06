@@ -111,19 +111,13 @@
             max-width: 80%;
             max-height: 80vh;
             border-radius: 10px;
+            transform: scale(0.5);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
         }
-        .overlay-img.zoom-in {
-            animation: zoomIn 0.5s ease forwards;
-        }
-        @keyframes zoomIn {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .overlay-img.active {
+            transform: scale(1);
+            opacity: 1;
         }
         .overlay-nav {
             position: absolute;
@@ -159,32 +153,6 @@
         }
         .overlay-close:hover {
             background: rgba(0, 0, 0, 0.8);
-        }
-        /* Slideshow Animation */
-        .overlay-img.slide-left {
-            animation: slideLeft 0.5s ease-in-out forwards;
-        }
-        .overlay-img.slide-right {
-            animation: slideRight 0.5s ease-in-out forwards;
-        }
-        @keyframes slideLeft {
-            0% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        @keyframes slideRight {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform:零部件
-            }
         }
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -238,11 +206,10 @@
                         The Infinaxis Data Centre is a cutting-edge digital infrastructure project under construction in Cyberjaya, Malaysia. Developed by Infinaxis Data Centre Platform—a joint venture between Gaw Capital Partners and A3 Capital—the facility spans over 17,000 square meters and is designed to deliver up to 12 megawatts of IT load. Scheduled for completion in Q2 2025, this Tier III-certified data centre will house 10 data halls and accommodate up to 1,830 racks. Strategically located to serve hyperscalers, cloud service providers, and AI workloads, the project marks a significant step in Malaysia's ambition to become a leading digital hub in Southeast Asia.
                     </p>
 
-
                     <h3>Project Details</h3>
                     <ul>
                         <li><strong>Location:</strong> Cyberjaya, Malaysia</li>
-                        <li><strong>Duration:</strong> April 2023 - Augest 2024</li>
+                        <li><strong>Duration:</strong> April 2023 - August 2024</li>
                         <li><strong>Role:</strong> Senior BIM Modeler</li>
                         <li><strong>LOD:</strong> 300</li>
                         <li><strong>Worked Firm:</strong> HSS BIM Solutions Pvt. Ltd.</li>
@@ -250,17 +217,17 @@
                         <li><strong>Reference:</strong> <a href="https://infinaxis.net/cyberjaya-1/">Project Reference</a></li>
                     </ul>
 
-		    <h3>Key Contributions</h3>
-		    <ul>
- 		       <li>Independently modeled roads, road furniture, drainage, and water supply systems using Revit.</li>
-		       <li>Developed parametric Revit families for drainage and road furniture, ensuring compliance with Building Execution Plans (BEP).</li>
-		       <li>Conducted clash detection using Navisworks to identify and resolve conflicts between MEP and structural models.</li>
-		    </ul>
+                    <h3>Key Contributions</h3>
+                    <ul>
+                        <li>Independently modeled roads, road furniture, drainage, and water supply systems using Revit.</li>
+                        <li>Developed parametric Revit families for drainage and road furniture, ensuring compliance with Building Execution Plans (BEP).</li>
+                        <li>Conducted clash detection using Navisworks to identify and resolve conflicts between MEP and structural models.</li>
+                    </ul>
 
-		    <h3>Challenges and Solutions</h3>
-		    <p>
- 		       The high precision required for modeling infrastructure around the building, including MEP systems, presented significant challenges, particularly in resolving clashes with architectural, structural, and MEP disciplines. Working independently, I implemented rigorous quality checks and utilized Navisworks for real-time clash detection and resolution, ensuring model accuracy and seamless coordination across all disciplines.
-		    </p>
+                    <h3>Challenges and Solutions</h3>
+                    <p>
+                        The high precision required for modeling infrastructure around the building, including MEP systems, presented significant challenges, particularly in resolving clashes with architectural, structural, and MEP disciplines. Working independently, I implemented rigorous quality checks and utilized Navisworks for real-time clash detection and resolution, ensuring model accuracy and seamless coordination across all disciplines.
+                    </p>
                     <h3>Outcomes</h3>
                     <p>
                         The BIM models facilitated precise installation of critical systems, supporting the data centre’s operational reliability and meeting project timelines.
@@ -339,88 +306,58 @@
     <!-- Template Javascript -->
     <script defer src="../js/main.js"></script>
 
-    <!-- Overlay and Slideshow Script -->
+    <!-- Overlay and Navigation Script -->
     <script defer>
         $(document).ready(function() {
             let currentIndex = 0;
-            let slideshowInterval;
-            let direction = 'left'; // Tracks slideshow direction
+            const totalImages = 9;
 
             // Image click to open overlay
             $('.model-gallery img').on('click', function() {
                 currentIndex = parseInt($(this).data('index'));
-                updateOverlayImage(true); // True for initial click to trigger zoomIn
+                updateOverlayImage();
                 $('#imageOverlay').addClass('active');
-                // Start slideshow after zoomIn animation completes
-                setTimeout(startSlideshow, 500); // Matches zoomIn duration
+                $('#overlayImage').addClass('active');
             });
 
             // Update overlay image
-            function updateOverlayImage(isInitialClick = false) {
+            function updateOverlayImage() {
                 const $image = $(`.model-gallery img[data-index="${currentIndex}"]`);
                 if (!$image.length) {
-                    console.error('Image not found for index:', currentIndex); // Debug: Check for missing images
+                    console.error('Image not found for index:', currentIndex);
                     return;
                 }
                 const imgSrc = $image.attr('src');
                 const imgAlt = $image.attr('alt');
                 const $overlayImage = $('#overlayImage');
 
-                // Remove all animations
-                $overlayImage.removeClass('zoom-in slide-left slide-right');
-
-                // Update image source and alt
-                $overlayImage.attr('src', imgSrc).attr('alt', imgAlt);
-
-                // Force animation with requestAnimationFrame
-                requestAnimationFrame(() => {
-                    if (isInitialClick) {
-                        $overlayImage.addClass('zoom-in');
-                    } else {
-                        $overlayImage.addClass(direction === 'left' ? 'slide-left' : 'slide-right');
-                    }
-                });
-            }
-
-            // Start slideshow
-            function startSlideshow() {
-                clearInterval(slideshowInterval);
-                slideshowInterval = setInterval(function() {
-                    if (direction === 'left') {
-                        currentIndex = (currentIndex + 1) % 9; // Adjusted to 9 images
-                        if (currentIndex === 8) direction = 'right';
-                    } else {
-                        currentIndex = (currentIndex - 1 + 9) % 9; // Adjusted to 9 images
-                        if (currentIndex === 0) direction = 'left';
-                    }
-                    updateOverlayImage();
-                }, 3000); // 3-second interval
+                // Reset and update image
+                $overlayImage.removeClass('active');
+                setTimeout(() => {
+                    $overlayImage.attr('src', imgSrc).attr('alt', imgAlt);
+                    $overlayImage.addClass('active');
+                }, 50); // Small delay to ensure reset before reapplying active class
             }
 
             // Previous image
-            $('#overlayPrev').on('click', function() {
-                clearInterval(slideshowInterval);
-                direction = 'right';
-                currentIndex = (currentIndex - 1 + 9) % 9; // Adjusted to 9 images
+            $('#overlayPrev').on('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
                 updateOverlayImage();
-                startSlideshow();
             });
 
             // Next image
-            $('#overlayNext').on('click', function() {
-                clearInterval(slideshowInterval);
-                direction = 'left';
-                currentIndex = (currentIndex + 1) % 9; // Adjusted to 9 images
+            $('#overlayNext').on('click', function(e) {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % totalImages;
                 updateOverlayImage();
-                startSlideshow();
             });
 
             // Close overlay
             $('#overlayClose, #imageOverlay').on('click', function(e) {
                 if (e.target.id === 'imageOverlay' || e.target.id === 'overlayClose') {
-                    clearInterval(slideshowInterval);
                     $('#imageOverlay').removeClass('active');
-                    $('#overlayImage').removeClass('zoom-in slide-left slide-right');
+                    $('#overlayImage').removeClass('active');
                 }
             });
         });
