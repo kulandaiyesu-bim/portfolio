@@ -17,7 +17,7 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <style>
-        /* Software Section Styles */
+        /* Software Section Styles (unchanged, included for context) */
         .software-section {
             background: #ffffff;
             padding: 60px 0;
@@ -30,7 +30,6 @@
             margin-bottom: 30px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             opacity: 0;
-            will-change: transform, opacity;
             transform: translateY(100%);
             transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
         }
@@ -58,7 +57,7 @@
             margin-bottom: 15px;
         }
 
-        /* Skills Section Styles */
+        /* Skills Section Styles (unchanged, included for context) */
         .skills {
             padding: 60px 0;
             background: #f8f9fa;
@@ -71,7 +70,6 @@
             margin-bottom: 30px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             opacity: 0;
-            will-change: transform, opacity;
             transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
         }
         .skill-item:nth-child(odd) {
@@ -104,7 +102,7 @@
             line-height: 1.6;
         }
 
-        /* Service Section Styles */
+        /* Service Section Styles (unchanged, included for context) */
         .service {
             padding: 60px 0;
             background: #ffffff;
@@ -116,7 +114,6 @@
             margin-bottom: 30px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             opacity: 0;
-            will-change: transform, opacity;
             transform: translateY(100%);
             transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
         }
@@ -166,20 +163,18 @@
             padding: 20px;
             box-sizing: border-box;
             opacity: 0;
-            will-change: transform, opacity;
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px); /* Changed to translateY for smoother animation */
+            transition: opacity 0.8s ease, transform 0.8s ease; /* Simplified transition */
         }
         .timeline-item.left {
             left: 0;
-            transform: translateX(-100%);
         }
         .timeline-item.right {
             left: 50%;
-            transform: translateX(100%);
         }
         .timeline-item.animate {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
         .timeline-text {
             background: #ffffff;
@@ -261,10 +256,13 @@
             margin-bottom: 0;
             white-space: nowrap;
             display: inline-block;
-            animation: marquee 12s linear infinite;
+            padding: 0 20px; /* Added padding to prevent cutoff */
+            animation: marquee 25s linear infinite; /* Increased duration for readability */
         }
         @keyframes marquee {
             0% { transform: translateX(100%); }
+            10% { transform: translateX(0); } /* Pause at start */
+            90% { transform: translateX(0); } /* Pause at end */
             100% { transform: translateX(-100%); }
         }
         .portfolio-text:hover h3 {
@@ -320,7 +318,7 @@
             color: #ff0000;
         }
 
-        /* Contact Info Styles */
+        /* Contact Info Styles (unchanged, included for context) */
         .contact-info, .contact-info p, .contact-info a {
             color: #ffffff !important;
         }
@@ -328,7 +326,7 @@
             background: none !important;
         }
 
-        /* Blog Section Styles */
+        /* Blog Section Styles (unchanged, included for context) */
         .blog {
             padding: 60px 0;
             background: #ffffff;
@@ -373,13 +371,13 @@
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
-                transform: translateX(-50%);
+                transform: translateY(20px); /* Adjusted for mobile */
             }
             .timeline-item.right {
-                transform: translateX(-50%);
+                transform: translateY(20px);
             }
             .timeline-item.animate {
-                transform: translateX(0);
+                transform: translateY(0);
             }
             .timeline-item::after {
                 left: 12px;
@@ -411,12 +409,13 @@
             .portfolio-text h3 {
                 animation: none;
                 transform: none;
+                padding: 0; /* Reset padding for mobile */
             }
         }
     </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Nav Bar Start -->
+    <!-- Nav Bar Start (unchanged, included for context) -->
     <div class="navbar navbar-expand-lg bg-light navbar-light">
         <div class="container-fluid">
             <a href="index.html" class="navbar-brand">Kulandai Yesu</a>
@@ -442,7 +441,7 @@
     </div>
     <!-- Nav Bar End -->
 
-    <!-- Hero Start -->
+    <!-- Hero Start (unchanged, included for context) -->
     <div class="hero" id="home">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -470,7 +469,7 @@
     </div>
     <!-- Hero End -->
 
-    <!-- About Start -->
+    <!-- About Start (unchanged, included for context) -->
     <div class="about wow fadeInUp" data-wow-delay="0.1s" id="about">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -492,7 +491,7 @@
     </div>
     <!-- About End -->
 
-    <!-- Service Start -->
+    <!-- Service Start (unchanged, included for context) -->
     <div class="service" id="service">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
@@ -565,7 +564,7 @@
                 <h2>Work Experience</h2>
             </header>
             <div class="timeline">
-                <div class="timeline-item left">
+                <div class="timeline-item left" data-wow-delay="0.2s">
                     <div class="timeline-text">
                         <div class="timeline-date">Jan 2024 - Present</div>
                         <h2>Senior BIM Modeler</h2>
@@ -575,7 +574,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="timeline-item right">
+                <div class="timeline-item right" data-wow-delay="0.4s">
                     <div class="timeline-text">
                         <div class="timeline-date">Aug 2022 - March 2023</div>
                         <h2>Junior BIM Modeler</h2>
@@ -598,7 +597,7 @@
                 <h2>Academic Background</h2>
             </header>
             <div class="timeline">
-                <div class="timeline-item left">
+                <div class="timeline-item left" data-wow-delay="0.2s">
                     <div class="timeline-text">
                         <div class="timeline-date">2017 - 2021</div>
                         <h2>B.E. in Civil Engineering</h2>
@@ -606,7 +605,7 @@
                         <p>Graduated with a 7.3 CGPA, specializing in civil engineering principles and infrastructure design.</p>
                     </div>
                 </div>
-                <div class="timeline-item right">
+                <div class="timeline-item right" data-wow-delay="0.4s">
                     <div class="timeline-text">
                         <div class="timeline-date">2015 - 2017</div>
                         <h2>Higher Secondary Education</h2>
@@ -614,7 +613,7 @@
                         <p>Achieved 84.6% in HSE, focusing on Science and Bio-Mathematics.</p>
                     </div>
                 </div>
-                <div class="timeline-item left">
+                <div class="timeline-item left" data-wow-delay="0.6s">
                     <div class="timeline-text">
                         <div class="timeline-date">2014 - 2015</div>
                         <h2>Secondary School Leaving Certificate</h2>
@@ -627,7 +626,7 @@
     </div>
     <!-- Education End -->
 
-    <!-- Proficiency Softwares Start -->
+    <!-- Proficiency Softwares Start (unchanged, included for context) -->
     <div class="software-section" id="software">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
@@ -694,7 +693,7 @@
     </div>
     <!-- Proficiency Softwares End -->
 
-    <!-- Skills Start -->
+    <!-- Skills Start (unchanged, included for context) -->
     <div class="skills" id="skills">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
@@ -888,7 +887,7 @@
     </div>
     <!-- Portfolio End -->
 
-    <!-- Collaborate for Success Start -->
+    <!-- Collaborate for Success Start (unchanged, included for context) -->
     <div class="banner wow zoomIn" data-wow-delay="0.1s" id="collaborate">
         <div class="container">
             <div class="section-header text-center">
@@ -905,7 +904,7 @@
     </div>
     <!-- Collaborate for Success End -->
 
-    <!-- Blog Start -->
+    <!-- Blog Start (unchanged, included for context) -->
     <div class="blog" id="blog">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
@@ -958,7 +957,7 @@
     </div>
     <!-- Blog End -->
 
-    <!-- Contact Start -->
+    <!-- Contact Start (unchanged, included for context) -->
     <div class="contact wow fadeInUp" data-wow-delay="0.1s" id="contact">
         <div class="container-fluid">
             <div class="container">
@@ -1003,7 +1002,7 @@
     </div>
     <!-- Contact End -->
 
-    <!-- Footer Start -->
+    <!-- Footer Start (unchanged, included for context) -->
     <div class="footer wow fadeIn" data-wow-delay="0.3s">
         <div class="container-fluid">
             <div class="container">
@@ -1026,15 +1025,15 @@
     </div>
     <!-- Footer End -->
 
-    <!-- Back to top button -->
+    <!-- Back to top button (unchanged, included for context) -->
     <a href="#" class="btn back-to-top" aria-label="Back to Top"><i class="fa fa-chevron-up"></i></a>
 
-    <!-- Pre Loader -->
+    <!-- Pre Loader (unchanged, included for context) -->
     <div id="loader" class="show">
         <div class="loader"></div>
     </div>
 
-    <!-- JavaScript Libraries -->
+    <!-- JavaScript Libraries (unchanged, included for context) -->
     <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script defer src="lib/easing/easing.min.js"></script>
@@ -1043,11 +1042,11 @@
     <script defer src="lib/typed/typed.min.js"></script>
     <script defer src="lib/isotope/isotope.pkgd.min.js"></script>
 
-    <!-- Contact Javascript File -->
+    <!-- Contact Javascript File (unchanged, included for context) -->
     <script defer src="mail/jqBootstrapValidation.min.js"></script>
     <script defer src="mail/contact.js"></script>
 
-    <!-- Template Javascript -->
+    <!-- Template Javascript (unchanged, included for context) -->
     <script defer src="js/main.js"></script>
 
     <!-- Animation and Functionality Script -->
