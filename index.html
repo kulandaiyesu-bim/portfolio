@@ -148,8 +148,6 @@
         .timeline {
             position: relative;
             padding: 40px 0;
-            overflow: hidden;
-            min-height: 300px;
         }
         .timeline::before {
             content: '';
@@ -173,11 +171,11 @@
         }
         .timeline-item.left {
             left: 0;
-            transform: translateX(-50%);
+            transform: translateX(-100%);
         }
         .timeline-item.right {
             left: 50%;
-            transform: translateX(50%);
+            transform: translateX(100%);
         }
         .timeline-item.animate {
             opacity: 1;
@@ -263,8 +261,7 @@
             margin-bottom: 0;
             white-space: nowrap;
             display: inline-block;
-            padding-right: 20px;
-            animation: marquee 15s linear infinite;
+            animation: marquee 12s linear infinite;
         }
         @keyframes marquee {
             0% { transform: translateX(100%); }
@@ -563,7 +560,7 @@
     <!-- Experience Start -->
     <div class="experience" id="experience">
         <div class="container">
-            <header class="section-header text-center wow zoomIn" data-wow-delay="0">
+            <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
                 <p>My Resume</p>
                 <h2>Work Experience</h2>
             </header>
@@ -574,13 +571,13 @@
                         <h2>Senior BIM Modeler</h2>
                         <h4>HSS BIM Solutions PVT.LTD., India</h4>
                         <p>
-                            Modeled complex utility networks (water supply, sewage, drainage, electrical, telecom) and bridges for overseas projects using Civil 3D and Revit. Created detailed profiles, managed data shortcuts, and developed parametric Revit models for infrastructure components, adhering to BEP standards. Resolved clashes using Navisworks for seamless system integration.
+                            Modeled complex utility networks (water supply, sewage, drainage, electrical, telecom) and bridges for overseas projects using Civil 3D and Revit. Created detailed profiles, managed data shortcuts, and developed parametric Revit families for infrastructure components, adhering to BEP standards. Resolved clashes using Navisworks for seamless system integration.
                         </p>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-text">
-                        <div class="timeline-date">Aug 2022 - Mar 2023</div>
+                        <div class="timeline-date">Aug 2022 - March 2023</div>
                         <h2>Junior BIM Modeler</h2>
                         <h4>HSS BIM Solutions PVT.LTD., India</h4>
                         <p>
@@ -596,7 +593,7 @@
     <!-- Education Start -->
     <div class="experience" id="education">
         <div class="container">
-            <header class="section-header text-center wow zoomIn" data-wow-delay="0">
+            <header class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
                 <p>My Education</p>
                 <h2>Academic Background</h2>
             </header>
@@ -606,7 +603,7 @@
                         <div class="timeline-date">2017 - 2021</div>
                         <h2>B.E. in Civil Engineering</h2>
                         <h4>Thamirabharani Engineering College, Anna University</h4>
-                        <p>Graduated with a 7.23 CGPA, specializing in civil engineering principles and infrastructure design.</p>
+                        <p>Graduated with a 7.3 CGPA, specializing in civil engineering principles and infrastructure design.</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
@@ -614,7 +611,7 @@
                         <div class="timeline-date">2015 - 2017</div>
                         <h2>Higher Secondary Education</h2>
                         <h4>St John’s Higher Secondary School</h4>
-                        <p>Achieved 88.6% in HSE with a focus on Biology and Mathematics.</p>
+                        <p>Achieved 84.6% in HSE, focusing on Science and Bio-Mathematics.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
@@ -644,7 +641,7 @@
                             <i class="fa fa-cube"></i>
                         </div>
                         <h3>Revit</h3>
-                        <p>Architectural modeling, sheet creation, scheduling, family creation, and basic MEP works.</p>
+                        <p>Architect modelling, sheet, schedule, family creation, and basic level MEP works.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -653,7 +650,7 @@
                             <i class="fa fa-road"></i>
                         </div>
                         <h3>Civil 3D</h3>
-                        <p>Utilities modeling (wet and dry), pressure pipe catalog creation, profiles, and labels.</p>
+                        <p>Utilities modelling (wet and dry), creating pressure pipe catalog, profiles, and labels.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -662,7 +659,7 @@
                             <i class="fa fa-exclamation-circle"></i>
                         </div>
                         <h3>Navisworks</h3>
-                        <p>Clash detection and resolution.</p>
+                        <p>Clash exporting and solving.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -671,7 +668,7 @@
                             <i class="fa fa-pencil-ruler"></i>
                         </div>
                         <h3>AutoCAD</h3>
-                        <p>2D drafting and detailing.</p>
+                        <p>2D Drafting works.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -680,7 +677,7 @@
                             <i class="fa fa-table"></i>
                         </div>
                         <h3>MS Excel</h3>
-                        <p>Data management and quantity takeoffs.</p>
+                        <p>General proficiency for data management.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -689,7 +686,7 @@
                             <i class="fa fa-file-word"></i>
                         </div>
                         <h3>MS Word</h3>
-                        <p>Documentation and report preparation.</p>
+                        <p>General proficiency for documentation.</p>
                     </div>
                 </div>
             </div>
@@ -729,19 +726,33 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="skill-item">
                         <i class="fa fa-clock"></i>
-                        <div>
-                            <h3>On-time Delivery</h3>
-                            <p>Committed to meeting deadlines with precise and high-quality deliverables, ensuring project milestones are achieved.</p>
-                        </div>
+                        <h3>On-Time Delivery</h3>
+                        <p>Committed to meeting deadlines with precise and high-quality outputs, ensuring project milestones are achieved.</p>
                     </div>
                 </div>
-                <div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item">
+                        <i class="fa fa-eye"></i>
+                        <h3>Attention to Detail</h3>
+                        <p>Ensure precision in modeling and documentation, maintaining high standards for quality and accuracy in all deliverables.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item">
+                        <i class="fa fa-tasks"></i>
+                        <h3>Project Coordination</h3>
+                        <p>Skilled in coordinating with multidisciplinary teams to align project goals and ensure smooth execution.</p>
+                    </div>
+                </div>
             </div>
+        </div>
     </div>
+    <!-- Skills End -->
+
     <!-- Portfolio Start -->
     <div class="portfolio" id="portfolio">
         <div class="container">
-            <div class="section-header text-center wow zoomIn" data-wow-delay="0">
+            <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
                 <p>My Portfolio</p>
                 <h2>Worked BIM Projects</h2>
             </div>
@@ -755,10 +766,10 @@
                 </div>
             </div>
             <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit filter-civil3d">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit filter-civil3d wow fadeInUp" data-wow-delay="0.0s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="img/portfolio-1.png" alt="Sg. Marang Bridge">
+                            <img src="img/portfolio-1.jpg" alt="Sg. Marang Bridge">
                             <div class="portfolio-overlay">
                                 <a class="btn" href="projects/project-sg-marang.html">View Details</a>
                             </div>
@@ -768,12 +779,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit filter-civil3d">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit filter-civil3d wow fadeInUp" data-wow-delay="0.2s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="img/portfolio-2.png" alt="LRT Pulau Pinang">
+                            <img src="img/portfolio-2.jpg" alt="LRT Pulau Pinang">
                             <div class="portfolio-overlay">
- <a class="btn" href="projects/project-lrt-pulau.html">View Details</a>
+                                <a class="btn" href="projects/project-lrt-pulau.html">View Details</a>
                             </div>
                         </div>
                         <div class="portfolio-text">
@@ -781,7 +792,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-civil3d">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-civil3d wow fadeInUp" data-wow-delay="0.4s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
                             <img src="img/portfolio-3.jpg" alt="King Salman Park">
@@ -794,13 +805,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit wow fadeInUp" data-wow-delay="0.6s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="img/portfolio-4.jpg" alt="Infinaxis Data Center">
+                            <img src="img/portfolio-4.jpg" alt="Infinaxis Data Centre">
                             <div class="portfolio-overlay">
                                 <a class="btn" href="projects/project-infinaxis.html">View Details</a>
-                            </div>
                             </div>
                         </div>
                         <div class="portfolio-text">
@@ -808,12 +818,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-md-6 col-sm-12 portfolio-item filter-revit filter-civil3d">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit filter-civil3d wow fadeInUp" data-wow-delay="0.8s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
                             <img src="img/portfolio-5.jpg" alt="Penang South Reclamation">
                             <div class="portfolio-overlay">
- <a class="btn" href="projects/project-penang-south.html">View Details</a>
+                                <a class="btn" href="projects/project-penang-south.html">View Details</a>
                             </div>
                         </div>
                         <div class="portfolio-text">
@@ -821,13 +831,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit wow fadeInUp" data-wow-delay="1.0s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
                             <img src="img/portfolio-6.jpg" alt="BIMer Services France">
                             <div class="portfolio-overlay">
                                 <a class="btn" href="projects/project-bimer-france.html">View Details</a>
-                            </div>
                             </div>
                         </div>
                         <div class="portfolio-text">
@@ -835,14 +844,12 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                <div class="col-lg-4 col-md-12 col-sm-6 portfolio-item filter-civil3d">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-civil3d wow fadeInUp" data-wow-delay="1.2s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
                             <img src="img/portfolio-7.jpg" alt="Kwasa Damansara">
                             <div class="portfolio-overlay">
                                 <a class="btn" href="projects/project-kwasa-damansara.html">View Details</a>
-                            </div>
                             </div>
                         </div>
                         <div class="portfolio-text">
@@ -850,10 +857,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-revit wow fadeInUp" data-wow-delay="1.4s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
-                            <img src="img/portfolio-8.png" alt="MRCB Mukim Setapak">
+                            <img src="img/portfolio-8.jpg" alt="MRCB Mukim Setapak">
                             <div class="portfolio-overlay">
                                 <a class="btn" href="projects/project-mukim-setapak.html">View Details</a>
                             </div>
@@ -863,7 +870,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-civil3d">
+                <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-civil3d wow fadeInUp" data-wow-delay="1.6s">
                     <div class="portfolio-wrap">
                         <div class="portfolio-img">
                             <img src="img/portfolio-9.jpg" alt="Subang Airport Regeneration Plan">
@@ -890,7 +897,7 @@
             </div>
             <div class="container banner-text">
                 <p>
-                    I am passionate about delivering innovative BIM solutions that drive project success. Let’s collaborate to bring your infrastructure projects to life with precision, efficiency, and quality. Reach out today to discuss how we can work together!
+                    I am passionate about delivering innovative BIM solutions that drive project success. Let’s collaborate to bring your infrastructure projects to life with precision, efficiency, and cutting-edge technology. Reach out today to discuss how we can work together!
                 </p>
                 <a class="btn" href="#contact">Get in Touch</a>
             </div>
@@ -907,52 +914,52 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0">
+                    <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
                         <div class="blog-img">
-                            <img src="img/blog-1.png" alt="Advancements in BIM for Infrastructure">
+                            <img src="img/blog-1.jpg" alt="Advancements in BIM for Infrastructure">
                         </div>
                         <div class="blog-text">
                             <h2>Advancements in BIM for Infrastructure</h2>
                             <div class="blog-meta">
                                 <p><i class="far fa-user"></i>Kulandai Yesu L</p>
                                 <p><i class="far fa-list-alt"></i>BIM Technology</p>
-                                <p><i class="far fa-calendar-alt"></i>15-Jun-2024</p>
-                                <p><i class="far fa-comment"></i>5</p>
+                                <p><i class="far fa-calendar-alt"></i>15-May-2025</p>
+                                <p><i class="far fa-comments"></i>5</p>
                             </div>
                             <p>
                                 Exploring the latest trends in BIM modeling for infrastructure projects, including automation and clash detection techniques.
                             </p>
-                            <a class="btn" href="#">Read More <i class="fa fa-angle-right"></i></a>
+                            <a class="btn" href="">Read More <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <div>
                 <div class="col-lg-6">
-                    <div class="blog-item wow fadeInUp" data-wow-delay="0">
+                    <div class="blog-item wow fadeInUp" data-wow-delay="0.3s">
                         <div class="blog-img">
-                            <img src="img/blog-2.png" alt="Optimizing Revit Workflows with Dynamo">
+                            <img src="img/blog-2.jpg" alt="Optimizing Revit Workflows with Dynamo">
                         </div>
                         <div class="blog-text">
                             <h2>Optimizing Revit Workflows with Dynamo</h2>
                             <div class="blog-meta">
                                 <p><i class="far fa-user"></i>Kulandai Yesu L</p>
                                 <p><i class="far fa-list-alt"></i>Revit Automation</p>
-                                <p><i class="far fa-calendar-alt"></i>10-May-2024</p>
-                                <p><i class="far fa-comment"></i>8</p>
+                                <p><i class="far fa-calendar-alt"></i>10-May-2025</p>
+                                <p><i class="far fa-comments"></i>8</p>
                             </div>
                             <p>
                                 A guide to using Dynamo for basic automation tasks in Revit, enhancing project efficiency.
                             </p>
-                            <a class="btn" href="#">Read More <i class="fa fa-angle-right"></i></a>
-                            </div>
+                            <a class="btn" href="">Read More <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
     <!-- Blog End -->
 
     <!-- Contact Start -->
-    <div class="contact wow fadeInUp" data-wow-delay="0" id="contact">
+    <div class="contact wow fadeInUp" data-wow-delay="0.1s" id="contact">
         <div class="container-fluid">
             <div class="container">
                 <div class="row align-items-center">
@@ -960,42 +967,35 @@
                         <div class="contact-info">
                             <h3>Contact Info</h3>
                             <p><i class="fa fa-envelope"></i> lkulandaiyesu@gmail.com</p>
-                            <p><i class="fa fa-phone"></i> +91-902501234</p>
-                            <p><i class="fab fa-linkedin-in"></i> <a href="https://linkedin.com/in/kulandai-yesu">View Profile</a></p>
+                            <p><i class="fa fa-phone"></i> +91-9025014840</p>
+                            <p><i class="fab fa-linkedin-in"></i> <a href="https://linkedin.com/in/kulandai-yesu">LinkedIn</a></p>
                         </div>
                     </div>
-                    <div>
                     <div class="col-md-8">
                         <div class="contact-form">
                             <div id="success"></div>
                             <form name="sentMessage" id="contactForm" action="https://formspree.io/f/mnndwypk" method="POST">
                                 <div class="control-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-validation-required-message="Please enter your name">
-                                    <p class="error"></p>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                    <p class="help-block"></p>
                                 </div>
                                 <div class="control-group">
-                                    <div>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required data-validation-required-message="Please enter your email">
-                                    <p class="error-message"></p>
-                                    </div>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                    <p class="help-block"></p>
                                 </div>
                                 <div class="control-group">
-                                    <div>
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required data-validation-required-message="Please enter a subject">
-                                    <p class="error-message"></p>
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                    <p class="help-block"></p>
                                 </div>
-                            </div>
-                            <div class="control-group">
+                                <div class="control-group">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                    <p class="help-block"></p>
+                                </div>
                                 <div>
-                                <textarea class="form-control" id="message" name="message" placeholder="Message" required data-validation-required-message="Please enter your message"></textarea>
-                                <p class="error-message"></p>
-                            </div>
-                            </div>
-                            <div class="control-group">
-                                <button class="btn" type="submit" id="submitMessageButton">Send Message</button>
-                            </div>
-                            </div>
-                        </form>
+                                    <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1011,7 +1011,7 @@
                     <h2>Kulandai Yesu</h2>
                     <h3>India</h3>
                     <div class="footer-menu">
-                        <p>+91-902501234</p>
+                        <p>+91-9025014840</p>
                         <p>lkulandaiyesu@gmail.com</p>
                     </div>
                     <div class="footer-social">
@@ -1020,7 +1020,7 @@
                 </div>
             </div>
             <div class="container copyright">
-                <p>© <a href="#">Kulandai Yesu</a>, All Rights Reserved | Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <p>© <a href="#">Kulandai Yesu</a>, All Right Reserved | Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
             </div>
         </div>
     </div>
@@ -1062,58 +1062,47 @@
                 threshold: 0.2
             };
 
-            let lastScrollTime = 0;
-            const debounceDelay = 100;
-
             const observer = new IntersectionObserver((entries, observer) => {
-                const currentTime = Date.now();
-                if (currentTime - lastScrollTime < debounceDelay) return;
-                lastScrollTime = currentTime;
-
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('animate');
-                            observer.unobserve(entry.target);
-                        }, 100);
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
-            animatedItems.forEach(item => observer.observe(item));
+            animatedItems.forEach(item => {
+                observer.observe(item);
+            });
 
             // Portfolio overlay touch events
             const portfolioImages = document.querySelectorAll('.portfolio-img');
             portfolioImages.forEach(img => {
                 img.addEventListener('touchstart', function() {
                     const overlay = this.querySelector('.portfolio-overlay');
-                    if (overlay) overlay.style.opacity = '1';
+                    if (overlay) {
+                        overlay.style.opacity = '1';
+                    }
                 });
+
                 img.addEventListener('touchend', function() {
                     const overlay = this.querySelector('.portfolio-overlay');
-                    if (overlay) overlay.style.opacity = '0';
+                    if (overlay) {
+                        overlay.style.opacity = '0';
+                    }
                 });
-            });
-
-            // Dynamic marquee animation duration
-            const portfolioTitles = document.querySelectorAll('.portfolio-text h3');
-            portfolioTitles.forEach(title => {
-                const textWidth = title.offsetWidth;
-                const containerWidth = title.parentElement.offsetWidth;
-                const duration = Math.max(20, (textWidth / containerWidth) * 20); // Adjust multiplier for speed
-                title.style.animationDuration = `${duration}s`;
             });
 
             // Navbar auto-close on mobile
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            const navbarText = document.querySelector('#navbar-text');
+            const navbarCollapse = document.querySelector('#navbarCollapse');
 
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    if (window.innerWidth <= 767.98 && navbarText.classList.contains('show')) {
+                    if (window.innerWidth <= 767.98 && navbarCollapse.classList.contains('show')) {
                         setTimeout(() => {
                             $('.navbar-collapse').collapse('hide');
-                        }, 200);
+                        }, 100);
                     }
                 });
             });
