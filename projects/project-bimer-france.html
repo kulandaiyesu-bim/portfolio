@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BIMer Services France - Kulandai Yesu</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="BIMer Services France Project Details" name="keywords">
+    <meta content="Details of the BIMer Services France project by Kulandai Yesu, Senior BIM Modeler" name="description">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .project-details {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        .project-details .project-img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .project-details h2 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .project-details h3 {
+            color: #333;
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .project-details p, .project-details li {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .project-details .btn {
+            margin-top: 20px;
+        }
+        .project-details ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        /* Model Images Section */
+        .model-images {
+            margin-top: 40px;
+            overflow: hidden;
+        }
+        .model-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .model-gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            animation: flipIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        /* Sequential animation delay for each image */
+        .model-gallery img:nth-child(1) { animation-delay: 0.15s; }
+        .model-gallery img:nth-child(2) { animation-delay: 0.3s; }
+        .model-gallery img:nth-child(3) { animation-delay: 0.45s; }
+        .model-gallery img:nth-child(4) { animation-delay: 0.6s; }
+        .model-gallery img:nth-child(5) { animation-delay: 0.75s; }
+        .model-gallery img:nth-child(6) { animation-delay: 0.9s; }
+        .model-gallery img:nth-child(7) { animation-delay: 1.05s; }
+        .model-gallery img:nth-child(8) { animation-delay: 1.2s; }
+        .model-gallery img:nth-child(9) { animation-delay: 1.35s; }
+        .model-gallery img:nth-child(10) { animation-delay: 1.5s; }
+        @keyframes flipIn {
+            0% {
+                opacity: 0;
+                transform: perspective(400px) rotateY(30deg) translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(400px) rotateY(0deg) translateX(0);
+            }
+        }
+        /* Image Overlay */
+        .image-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .image-overlay.active {
+            display: flex;
+        }
+        .overlay-img {
+            max-width: 80%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+        .overlay-img.zoom-in {
+            animation: zoomIn 0.5s ease forwards;
+        }
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .overlay-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .overlay-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .overlay-prev {
+            left: 20px;
+        }
+        .overlay-next {
+            right: 20px;
+        }
+        .overlay-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+        .overlay-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        /* Slideshow Animation */
+        .overlay-img.slide-left {
+            animation: slideLeft 0.5s ease-in-out forwards;
+        }
+        .overlay-img.slide-right {
+            animation: slideRight 0.5s ease-in-out forwards;
+        }
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideRight {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .model-gallery img {
+                width: 150px;
+                height: 100px;
+            }
+            .overlay-img {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-light navbar-light">
+        <div class="container-fluid">
+            <a href="../index.html" class="navbar-brand">Kulandai Yesu</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <a href="../index.html#home" class="nav-item nav-link">Home</a>
+                    <a href="../index.html#about" class="nav-item nav-link">About</a>
+                    <a href="../index.html#software" class="nav-item nav-link">Software Skills</a>
+                    <a href="../index.html#service" class="nav-item nav-link">Service</a>
+                    <a href="../index.html#experience" class="nav-item nav-link">Experience</a>
+                    <a href="../index.html#education" class="nav-item nav-link">Education</a>
+                    <a href="../index.html#portfolio" class="nav-item nav-link active">Portfolio</a>
+                    <a href="../index.html#skills" class="nav-item nav-link">Skills</a>
+                    <a href="../index.html#team" class="nav-item nav-link">Team</a>
+                    <a href="../index.html#blog" class="nav-item nav-link">Blog</a>
+                    <a href="../index.html#contact" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Project Details Start -->
+    <div class="project-details wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>BIMer Services France</h2>
+                    <img src="../img/portfolio-6.jpg" alt="BIMer Services France" class="project-img">
+
+                    <h3>About BIMer Services:</h3>
+                    <p>
+                        BIMer Services is a French company based in Montpellier, specializing in Building Information Modeling for Operation and Maintenance (BIM GEM). They offer innovative digital solutions to enhance the management of real estate assets. Their services include the creation of digital twins, BIM charters, and maintenance logs, all adhering to the ISO 16739 standard to ensure data ownership and software independence. BIMer Services supports property managers and public housing organizations across France in digitizing and optimizing their building portfolios.
+                    </p>
+
+
+                    <h3>Project Details</h3>
+                    <ul>
+                        <li><strong>Location:</strong> Montpellier, France</li>
+                        <li><strong>Duration:</strong> Aug 2022 - Apr 2023</li>
+                        <li><strong>LOD:</strong> 300</li>
+                        <li><strong>Role:</strong> Revit Architecture BIM Modeler</li>
+                        <li><strong>Worked Firm:</strong> HSS BIM Solutions Pvt. Ltd.</li>
+                        <li><strong>Tools Used:</strong> Revit, IFC Viewer, Dynamo (basic usage), AutoCAD, MS Excel, MS Word</li>
+                        <li><strong>Reference:</strong> <a href="https://bimer.fr/" target="_blank">Project Reference Link</a></li>
+                    </ul>
+
+                    <h3>Key Contributions</h3>
+                    <ul>
+                        <li>Developed as-built Revit models for residential and commercial buildings, including architectural and landscape.</li>
+                        <li>Used Dynamo for automating sheet creation, schedule creating, place the schedules with respective sheets, quantity takeoffs, improving efficiency and reduce the manual interuptions.</li>
+                        <li>Check the data match with standards to ensure model accuracy.</li>
+                        <li>Ensured IFC-compliant models for seamless data exchange with French stakeholders.</li>
+                    </ul>
+
+                    <h3>Challenges and Solutions</h3>
+                    <p>
+                        Adapting to French building standards required extensive coordination. I conducted thorough reviews with local teams and used AutoCAD for 2D drafting to align with client requirements, ensuring model compliance.
+                    </p>
+
+                    <h3>Outcomes</h3>
+                    <p>
+                        The accurate as-built models supported facility management and renovation planning, delivering value to clients and meeting project deadlines.
+                    </p>
+
+                    <!-- Model Images Section -->
+                    <h3>Model Images</h3>
+                    <div class="model-images">
+                        <div class="model-gallery">
+                            <img src="../projects/bim/bim-1.jpg" alt="BIMer Services France Model Image 1" data-index="0">
+                            <img src="../projects/bim/bim-2.jpg" alt="BIMer Services France Model Image 2" data-index="1">
+                            <img src="../projects/bim/bim-3.jpg" alt="BIMer Services France Model Image 3" data-index="2">
+                            <img src="../projects/bim/bim-4.jpg" alt="BIMer Services France Model Image 4" data-index="3">
+                            <img src="../projects/bim/bim-5.jpg" alt="BIMer Services France Model Image 5" data-index="4">
+                            <img src="../projects/bim/bim-6.jpg" alt="BIMer Services France Model Image 6" data-index="5">
+                            <img src="../projects/bim/bim-7.jpg" alt="BIMer Services France Model Image 7" data-index="6">
+                            <img src="../projects/bim/bim-8.jpg" alt="BIMer Services France Model Image 8" data-index="7">
+                            <img src="../projects/bim/bim-9.jpg" alt="BIMer Services France Model Image 9" data-index="8">
+                            <img src="../projects/bim/bim-10.jpg" alt="BIMer Services France Model Image 9" data-index="8">
+                            <img src="../projects/bim/bim-11.jpg" alt="BIMer Services France Model Image 9" data-index="8">
+                            <img src="../projects/bim/bim-12.jpg" alt="BIMer Services France Model Image 9" data-index="8">
+                         </div>
+                    </div>
+
+                    <a class="btn" href="../index.html#portfolio">Back to Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project Details End -->
+
+    <!-- Image Overlay -->
+    <div class="image-overlay" id="imageOverlay">
+        <span class="overlay-close" id="overlayClose"><i class="fas fa-times"></i></span>
+        <img src="" alt="" class="overlay-img" id="overlayImage">
+        <span class="overlay-nav overlay-prev" id="overlayPrev"><i class="fas fa-chevron-left"></i></span>
+        <span class="overlay-nav overlay-next" id="overlayNext"><i class="fas fa-chevron-right"></i></span>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="footer wow fadeIn" data-wow-delay="0.3s">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="footer-info">
+                    <h2>Kulandai Yesu</h2>
+                    <h3>India</h3>
+                    <div class="footer-menu">
+                        <p>+91-9025014840</p>
+                        <p>lkulandaiyesu@gmail.com</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/kulandai-yesu"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container copyright">
+                <p>© <a href="#">Kulandai Yesu</a>, <p>© <a href="#">Kulandai Yesu</a>, All Right Reserved </a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to top button -->
+    <a href="#" class="btn back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Pre Loader -->
+    <div id="loader" class="show">
+        <div class="loader"></div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script defer src="../lib/easing/easing.min.js"></script>
+    <script defer src="../lib/wow/wow.min.js"></script>
+    <script defer src="../lib/waypoints/waypoints.min.js"></script>
+    <script defer src="../lib/typed/typed.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script defer src="../js/main.js"></script>
+
+    <!-- Overlay and Slideshow Script -->
+    <script defer>
+        $(document).ready(function() {
+            let currentIndex = 0;
+            let slideshowInterval;
+            let direction = 'left'; // Tracks slideshow direction
+
+            // Image click to open overlay
+            $('.model-gallery img').on('click', function() {
+                currentIndex = parseInt($(this).data('index'));
+                updateOverlayImage(true); // True for initial click to trigger zoomIn
+                $('#imageOverlay').addClass('active');
+                // Start slideshow after zoomIn animation completes
+                setTimeout(startSlideshow, 500); // Matches zoomIn duration
+            });
+
+            // Update overlay image
+            function updateOverlayImage(isInitialClick = false) {
+                const $image = $(`.model-gallery img[data-index="${currentIndex}"]`);
+                if (!$image.length) {
+                    console.error('Image not found for index:', currentIndex); // Debug: Check for missing images
+                    return;
+                }
+                const imgSrc = $image.attr('src');
+                const imgAlt = $image.attr('alt');
+                const $overlayImage = $('#overlayImage');
+
+                // Remove all animations
+                $overlayImage.removeClass('zoom-in slide-left slide-right');
+
+                // Update image source and alt
+                $overlayImage.attr('src', imgSrc).attr('alt', imgAlt);
+
+                // Force animation with requestAnimationFrame
+                requestAnimationFrame(() => {
+                    if (isInitialClick) {
+                        $overlayImage.addClass('zoom-in');
+                    } else {
+                        $overlayImage.addClass(direction === 'left' ? 'slide-left' : 'slide-right');
+                    }
+                });
+            }
+
+            // Start slideshow
+            function startSlideshow() {
+                clearInterval(slideshowInterval);
+                slideshowInterval = setInterval(function() {
+                    if (direction === 'left') {
+                        currentIndex = (currentIndex + 1) % 10;
+                        if (currentIndex === 9) direction = 'right';
+                    } else {
+                        currentIndex = (currentIndex - 1 + 10) % 10;
+                        if (currentIndex === 0) direction = 'left';
+                    }
+                    updateOverlayImage();
+                }, 3000); // 3-second interval
+            }
+
+            // Previous image
+            $('#overlayPrev').on('click', function() {
+                clearInterval(slideshowInterval);
+                direction = 'right';
+                currentIndex = (currentIndex - 1 + 10) % 10;
+                updateOverlayImage();
+                startSlideshow();
+            });
+
+            // Next image
+            $('#overlayNext').on('click', function() {
+                clearInterval(slideshowInterval);
+                direction = 'left';
+                currentIndex = (currentIndex + 1) % 10;
+                updateOverlayImage();
+                startSlideshow();
+            });
+
+            // Close overlay
+            $('#overlayClose, #imageOverlay').on('click', function(e) {
+                if (e.target.id === 'imageOverlay' || e.target.id === 'overlayClose') {
+                    clearInterval(slideshowInterval);
+                    $('#imageOverlay').removeClass('active');
+                    $('#overlayImage').removeClass('zoom-in slide-left slide-right');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
